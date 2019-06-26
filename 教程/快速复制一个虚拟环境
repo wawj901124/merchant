@@ -1,0 +1,4 @@
+现将依赖的环境冷冻起来：pip freeze > requirements.txt
+创建一个新的空虚拟环境：mkvirtualenv3 blog
+选择新的虚拟环境：workon blog
+安装相关依赖包：pip install -r requirements.txt
