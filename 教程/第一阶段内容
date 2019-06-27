@@ -1,0 +1,6 @@
+1.根据使用说明（https://selenium-python.readthedocs.io/）文档中的一个示例来了解学习；
+2.根据示例自己写一个商户（https://bjw.halodigit.com:9060/nereus/merchant/index）登录的脚本
+3.写多个登录（登录成功、登录失败）场景的脚本；
+4.使用unittest整合登录的脚本；
+5.使用数据驱动ddt整合登录的脚本；
+6.将登录过程写成一个方法进行调用使用；
