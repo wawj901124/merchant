@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 
 
 #谷歌浏览器
-path = r"%s/driver/chromedriver.exe" % str(os.path.dirname(os.path.abspath(__file__))) # 配置驱动路径
+path = r"%s/driver/chromedriver.exe" % str(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) # 配置驱动路径
 print("path:%s" % path)
 option = webdriver.ChromeOptions()
 option.add_argument('--user-data-dir=C:\\Users\\Administrator\\Local\\Google\\Chrome\\User Data\\Default')  # 设置成用户自己的数据目录# 浏览器输入chrome://version 下个人资料路径就是自己的数据目录
