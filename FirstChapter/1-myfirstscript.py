@@ -21,4 +21,5 @@ elem.send_keys("pycon")
 elem.send_keys(Keys.RETURN)
 print("driver.page_source:%s" % driver.page_source)
 assert "No results found." not in driver.page_source
-driver.close()
+# driver.close()
+driver.quit()

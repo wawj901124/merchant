@@ -79,10 +79,11 @@ class TestLoginClass(unittest.TestCase):  # 创建测试类
         assert "Incorrect account or password" in self.driver.page_source
 
 
-
+print(__name__)
 
 if __name__ == '__main__':
     print("hello world")
+
     unittest.main()
 
 
