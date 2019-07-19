@@ -4,8 +4,8 @@ import os
 import ctypes
 
 class MyLog(object):
-    def __init__(self,context):
-        self.context = context
+    def __init__(self):
+        # self.context = context
         self.logger = self.createLogger()
         self.log_name = self.createLogFile()
         self.consle = self.openConsoleOutputLog()    #打开控制台日志输出
@@ -71,14 +71,17 @@ class MyLog(object):
         self.logger.addHandler(file_handle)  # 将日志输出文件加入到日志中
         return file_handle
 
-    def printLog(self):   #打印log
-        # self.logger.debug(self.context)   #打印日志
-        self.logger.info(self.context)  # 打印日志
+    def printInfoLog(self,context):   #打印log
+        self.logger.info(context)  # 打印日志
 
-    def printErrorLog(self):   #打印log
-        # self.logger.debug(self.context)   #打印日志
-        self.logger.error(self.context)  # 打印日志
+    def printErrorLog(self,context):   #打印log
+        self.logger.error(context)  # 打印日志
 
+    def printDebugLog(self,context):   #打印log
+        self.logger.debug(context)  # 打印日志
+
+    def printWarningLog(self,context):   #打印log
+        self.logger.warning(context)  # 打印日志
 
 
     def closeConsoleOutputLog(self): #关闭控制台日志输出
@@ -90,15 +93,21 @@ class MyLog(object):
         self.file_handle.close()  # 关闭文件
         self.logger.removeHandler(self.file_handle)  # 将日志输出文件移出Handler
 
-    def runMyLog(self):
-        self.printLog()
+    # def runMyLog(self):
+    #     self.printLog()
+    #     self.closeConsoleOutputLog()
+    #     self.closeopenFileOutputLog()
+    #
+    # def runErrorLog(self):
+    #     self.printErrorLog()
+    #     self.closeConsoleOutputLog()
+    #     self.closeopenFileOutputLog()
+
+    def closeLog(self):
         self.closeConsoleOutputLog()
         self.closeopenFileOutputLog()
 
-    def runErrorLog(self):
-        self.printErrorLog()
-        self.closeConsoleOutputLog()
-        self.closeopenFileOutputLog()
+mylog = MyLog()   #实例化，可以实现单例模式
 
 
 if __name__ == "__main__":
