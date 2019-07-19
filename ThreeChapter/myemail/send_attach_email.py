@@ -68,5 +68,5 @@ if __name__ == '__main__':
     # sen.send_main([2,3,4],[5,6,7],'../report/01_report.html')
     user_list = ['xiangkaizheng@iapppay.com']
     emailtitle = "web测试报告"
-    sen.send_main_result_num(2,0,0,user_list,emailtitle,r'D:\Users\Administrator\PycharmProjects\merchant\SecondChapter\myreports\report.html')
+    sen.send_main_result_num(2,0,0,r'D:\Users\Administrator\PycharmProjects\merchant\SecondChapter\myreports\report.html',user_list,emailtitle)
     print("邮件已发送")
