@@ -2,13 +2,15 @@ import unittest
 import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from ddt import ddt,data,unpack
 
 
-
+@ddt
 class TestLoginClass(unittest.TestCase):  # 创建测试类
 
     @classmethod  # 类方法，只执行一次，但必须要加注解@classmethod,且名字固定为setUpClass
     def setUpClass(cls):
+        print("-----------------------------------")
         # cls.activeweb = ActiveWeb()  # 实例化
         # cls.loginpage = LoginPage()  # 实例化
         #
@@ -20,6 +22,7 @@ class TestLoginClass(unittest.TestCase):  # 创建测试类
     @classmethod  # 类方法，只执行一次，但必须要加注解@classmethod,且名字固定为tearDownClass
     def tearDownClass(cls):
         # cls.activeweb.closeBrowse()
+        print("-----------------------------------")
         pass
 
     def setUp(self):  # 每条用例执行测试之前都要执行此方法
@@ -43,47 +46,40 @@ class TestLoginClass(unittest.TestCase):  # 创建测试类
         self.driver.close()
         pass
 
-    # @unittest.skip('testLoginSuccess')
-    def testLoginSuccess(self):
+
+    def definelogin(self,account, password, asserttext):
+        assert asserttext not in self.driver.page_source
         elem = self.driver.find_element_by_name("login.loginName")
         elem.clear()
-        elem.send_keys("81122336666")
+        elem.send_keys(account)
         elem.send_keys(Keys.TAB)  # 按tab键
         elem = self.driver.find_element_by_name("loginPwd")
         elem.clear()
-        elem.send_keys("abc123456")
+        elem.send_keys(password)
 
         elem = self.driver.find_element_by_xpath('//*[@id="login-holder"]/div[4]/form/div/div[2]/a/span')
         elem.click()
         time.sleep(5)
         time.sleep(5)
         print("driver.page_source:%s" % self.driver.page_source)
-        assert "Applications list" in self.driver.page_source
+        assert asserttext in self.driver.page_source
 
-    @unittest.skip('testLoginFail')
-    def testLoginFail(self):
-        elem = self.driver.find_element_by_name("login.loginName")
-        elem.clear()
-        elem.send_keys("83344567832")
-        elem.send_keys(Keys.TAB)  # 按tab键
-        elem = self.driver.find_element_by_name("loginPwd")
-        elem.clear()
-        elem.send_keys("abc123456")
-
-        elem = self.driver.find_element_by_xpath('//*[@id="login-holder"]/div[4]/form/div/div[2]/a/span')
-        elem.click()
-        time.sleep(5)
-        time.sleep(5)
-
-        print("driver.page_source:%s" % self.driver.page_source)
-        assert "Incorrect account or password" in self.driver.page_source
+    # 下面的(("81122336666","abc123456", "Applications list"),
+    #           ("83344567832","abc123456","Incorrect account or password")
+    #           )代表我们传入的参数,每次传入三个值
+    @data(("81122336666","abc123456", "Applications list"),
+          ("83344567832","abc123456","Incorrect account or password")
+          )
+    # 告诉我们的测试用例传入的是两个以上的值
+    @unpack
+    # 定义三个参数用于接收我们传入的参数
+    def test(self,account, password, asserttext):
+        self.definelogin(account, password, asserttext)
 
 
-print("loginunittest文件中的__name__：%s"%__name__)
-
-# if __name__ == '__main__':
-#     print("hello world")
-#     unittest.main()
+if __name__ == '__main__':
+    print("hello world")
+    unittest.main()
 
 
 

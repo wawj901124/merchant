@@ -70,3 +70,6 @@
          为了进一步说明，可以在中脚本的 if __name__=="__main__": 之前加入 print(__name__)，即将 __name__ 打印出来。
 
       if __name__ == '__main__'下的语只有在运行当前文件（模块）的时候才会被运行
+     9.pip install matplotlib:安装matplotlibpip，画饼图用
+
+     
