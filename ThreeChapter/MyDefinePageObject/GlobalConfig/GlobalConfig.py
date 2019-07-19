@@ -1,0 +1,8 @@
+
+IS_ONLINE = False
+ONLINE_DOMAIN_NAME = ""
+TEST_DOMAIN_NAME = "https://bjw.halodigit.com:9060"
+
+WEBDRIVERCONFIG = "1"
+# WEBDRIVERCONFIG = "2"
+# WEBDRIVERCONFIG = "3"

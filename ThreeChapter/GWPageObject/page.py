@@ -1,5 +1,5 @@
-from SecondChapter.element import BasePageElement
-from SecondChapter.locators import MainPageLocators
+from ThreeChapter.GWPageObject.element import BasePageElement
+from ThreeChapter.GWPageObject.locators import MainPageLocators
 
 class SearchTextElement(BasePageElement):
     """This class gets the search text from the specified locator"""

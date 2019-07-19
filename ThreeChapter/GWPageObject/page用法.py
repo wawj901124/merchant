@@ -1,6 +1,6 @@
 import unittest
 from selenium import webdriver
-import SecondChapter.page as page
+import ThreeChapter.GWPageObject.page as page
 
 class PythonOrgSearch(unittest.TestCase):
     """A sample test class to show how page object works"""
