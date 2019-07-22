@@ -12,6 +12,5 @@ class MerchantId(object):
         return self.merid
 
 
-
 mid = MerchantId()
 print(id(mid))
